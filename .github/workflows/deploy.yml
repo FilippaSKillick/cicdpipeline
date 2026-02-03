@@ -20,6 +20,13 @@ jobs:
           tenant-id: ${{ vars.AZURE_TENANT_ID }}
           subscription-id: ${{ vars.AZURE_SUBSCRIPTION_ID }}
 
+      - name: Debug - Check login
+        run: |
+          echo "Client ID: ${{ vars.AZURE_CLIENT_ID }}"
+          echo "Tenant ID: ${{ vars.AZURE_TENANT_ID }}"
+          echo "Subscription ID: ${{ vars.AZURE_SUBSCRIPTION_ID }}"
+          az account show
+
       - name: Build and push to ACR
         run: |
           az acr build \
